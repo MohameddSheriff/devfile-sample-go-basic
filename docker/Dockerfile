@@ -3,6 +3,7 @@ FROM golang:1.16-alpine
 WORKDIR /app
 
 COPY go.mod ./
+RUN go get github.com/instana/go-sensor
 RUN go mod download
 
 COPY *.go ./
