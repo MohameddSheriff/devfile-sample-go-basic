@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"flag"
-	"instana"
+	instana "github.com/instana/go-sensor"
 )
 var port = flag.Int("p", 8080, "server port")
 
