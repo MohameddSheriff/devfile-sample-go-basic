@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"flag"
+	"instana"
 )
 var port = flag.Int("p", 8080, "server port")
 
