@@ -11,8 +11,9 @@ var port = flag.Int("p", 8080, "server port")
 func main() {
 	instana.InitSensor(instana.DefaultOptions())
 	flag.Parse()
+	sensor := instana.NewSensor("my-http-server")
 	http.HandleFunc("/", HelloServer)
-	http.HandleFunc("/mo", HelloServer1)
+	http.HandleFunc("/mo", instana.TracingHandlerFunc(sensor, "/mo", HelloServer1))
 	http.HandleFunc("/sherr", HelloServer2)
 	http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", *port), nil)
 }
