@@ -8,6 +8,7 @@ import (
 var port = flag.Int("p", 8080, "server port")
 
 func main() {
+	instana.InitSensor(instana.DefaultOptions())
 	flag.Parse()
 	http.HandleFunc("/", HelloServer)
 	http.HandleFunc("/mo", HelloServer1)
